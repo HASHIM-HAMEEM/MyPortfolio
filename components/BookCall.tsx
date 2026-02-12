@@ -3,8 +3,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BookCall = () => {
+  const { t } = useLanguage()
+  
   return (
     <div className="flex justify-center md:justify-start px-4 -mt-2 mb-4">
       <motion.div 
@@ -25,7 +28,7 @@ const BookCall = () => {
         }}
       >
         <a 
-          href="https://cal.com/" 
+          href="https://cal.com/SCNZ313" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="block h-full bg-[#1C1C1C] rounded-lg text-white text-sm sm:text-md px-2 sm:px-3 py-2 sm:py-1.5 w-full transition-all group relative overflow-hidden" 
@@ -48,7 +51,7 @@ const BookCall = () => {
               <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/10 flex items-center justify-center text-[8px] sm:text-[10px]">You</div>
             </div>
             <span className="whitespace-nowrap relative block text-sm sm:text-base">
-              Book a Free Call
+              {t('bookCall.text')}
             </span>
           </div>
         </a>

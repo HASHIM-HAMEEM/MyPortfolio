@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PageCurl from "@/components/PageCurl";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +16,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhinav Kale",
-  description: "A portfolio which is made with ❤️",
+  title: "Hashim Hameem | Full-Stack Developer & Mobile App Specialist",
+  description: "Portfolio of Hashim Hameem - Full-Stack Developer & Mobile App Specialist. Crafting innovative mobile and web solutions with Flutter, React, and Node.js.",
+  metadataBase: new URL('https://hashimhameem.site'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Hashim Hameem | Full-Stack Developer & Mobile App Specialist",
+    description: "Portfolio of Hashim Hameem - Full-Stack Developer & Mobile App Specialist. Crafting innovative mobile and web solutions with Flutter, React, and Node.js.",
+    url: 'https://hashimhameem.site',
+    siteName: 'Hashim Hameem Portfolio',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Hashim Hameem | Full-Stack Developer & Mobile App Specialist",
+    description: "Portfolio of Hashim Hameem - Full-Stack Developer & Mobile App Specialist",
+    creator: '@HashimScnz',
+  },
 };
 
 export default function RootLayout({
@@ -28,8 +48,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PageCurl />
-        {children}
+        <LanguageProvider>
+          <LanguageSwitcher />
+          <ScrollToTop />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

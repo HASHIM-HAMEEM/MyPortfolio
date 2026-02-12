@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# firebase
+.firebase/
+
+# generated at build
+/public/rss.xml
+/public/sitemap.xml
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -2,19 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes spotlight {
+  0% {
+    box-shadow: 0 0 0px rgba(100, 255, 218, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(100, 255, 218, 0);
+  }
+}
+
+.spotlight-glow {
+  animation: spotlight 0.5s ease-in-out;
+}
+
 ::selection {
-  background: rgba(0, 255, 209, 0.3);
+  background: rgba(100, 255, 218, 0.3);
   color: #fff;
 }
 
 ::-moz-selection {
-  background: rgba(0, 255, 209, 0.3);
+  background: rgba(100, 255, 218, 0.3);
   color: #fff;
 }
 
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+}
 
-.screen{
-  @apply md:w-[825px] md:mx-auto px-4 md:py-8 py-4;
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .ml-1 {
+  margin-left: 0;
+  margin-right: 0.25rem;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.screen {
+  @apply md:max-w-[900px] md:w-full md:mx-auto px-4 md:py-10 py-5;
 }
 
 /* Page curl effect */

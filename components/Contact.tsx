@@ -2,42 +2,48 @@
 
 import React from 'react';
 import BookCall from './BookCall';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage()
   return (
     <div className="my-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#111111] rounded-lg overflow-hidden">
         {/* Left Side – Text Content */}
         <div className="p-8 flex flex-col justify-center">
           <div className="mb-6">
-            <p className="text-[#9CA3AF] text-sm mb-1">Start here</p>
+            <p className="text-[#64FFDA] text-sm mb-1 font-semibold tracking-wider uppercase">{t('contact.letsConnect')}</p>
             <h2 className="text-2xl md:text-3xl text-white font-medium mb-2">
-              Let&apos;s hop on a quick call and see if we&apos;ve got the&nbsp;
-              <span className="italic">right chemistry</span>.
+              {t('contact.readyToTransform')}&nbsp;
+              <span className="italic text-[#64FFDA]">{t('contact.reality')}</span>?
             </h2>
           </div>
 
           <div className="space-y-8 mt-4">
             <div>
-              <p className="text-[#4EA5FF] font-medium mb-2">Want to bounce ideas?</p>
+              <p className="text-[#4EA5FF] font-semibold mb-2 flex items-center gap-2">
+                <span>💡</span> {t('contact.gotIdea')}
+              </p>
               <p className="text-[#9CA3AF]">
-                Let&apos;s jump on a quick call and explore what&apos;s possible.
+                {t('contact.gotIdeaDesc')}
               </p>
             </div>
 
             <div>
-              <p className="text-[#1ED760] font-medium mb-2">
-                Looking to build something bigger?
+              <p className="text-[#1ED760] font-semibold mb-2 flex items-center gap-2">
+                <span>🚀</span> {t('contact.scalingUp')}
               </p>
               <p className="text-[#9CA3AF]">
-                I can connect you with the right team and resources.
+                {t('contact.scalingUpDesc')}
               </p>
             </div>
 
             <div>
-              <p className="text-[#FF7A45] font-medium mb-2">In Nagpur?</p>
+              <p className="text-[#FF7A45] font-semibold mb-2 flex items-center gap-2">
+                <span>☕</span> {t('contact.basedInKashmir')}
+              </p>
               <p className="text-[#9CA3AF]">
-                Perfect! Let&apos;s grab a coffee and brainstorm in person.
+                {t('contact.basedInKashmirDesc')}
               </p>
             </div>
           </div>
@@ -67,9 +73,9 @@ const Contact = () => {
             </div>
 
             <div className="text-center mb-6">
-              <h3 className="text-xl text-white font-medium mb-3">Ready to chat?</h3>
+              <h3 className="text-xl text-white font-semibold mb-3">{t('contact.letsMakeItHappen')}</h3>
               <p className="text-[#9CA3AF] mb-6">
-                  Schedule a free 30-minute strategy call to refine your idea and initiate our collaboration.
+                  {t('contact.bookSession')}
               </p>
 
               <div className="flex justify-center gap-2 mb-6">
@@ -85,7 +91,7 @@ const Contact = () => {
 
             <div className="mt-8 border-t border-[#2A2A2A] pt-6 w-full">
               <p className="text-center text-[#9CA3AF] text-sm mt-5 italic">
-                &quot;Turning your vision into digital reality is just one conversation away&quot;
+                &quot;{t('contact.quote')}&quot;
               </p>
             </div>
           </div>

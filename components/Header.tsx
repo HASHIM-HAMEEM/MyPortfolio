@@ -3,10 +3,12 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const Header = () => {
   const pathname = usePathname()
   const [activeItem, setActiveItem] = useState('home')
+  const { t } = useLanguage()
 
   useEffect(() => {
     // Set active based on current path
@@ -16,9 +18,9 @@ const Header = () => {
   }, [pathname])
 
   const navItems = [
-    { name: 'Home', path: '/', id: 'home' },
-    { name: 'Projects', path: '/projects', id: 'projects' },
-    { name: 'Blogs', path: '/blogs', id: 'blogs' }
+    { name: t('nav.home'), path: '/', id: 'home' },
+    { name: t('nav.projects'), path: '/projects', id: 'projects' },
+    { name: t('nav.blogs'), path: '/blogs', id: 'blogs' }
   ]
 
   return (
@@ -32,7 +34,7 @@ const Header = () => {
                   href={item.path}
                   className={`px-3 py-1.5 ${index > 0 ? 'ml-1 md:ml-2' : ''} rounded-full transition-all duration-200 text-sm md:text-base font-medium ${
                     activeItem === item.id 
-                      ? 'bg-[#00FFD1]/20 text-[#00FFD1]' 
+                      ? 'bg-[#64FFDA]/20 text-[#64FFDA]' 
                       : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
                 >

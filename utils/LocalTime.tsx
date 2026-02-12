@@ -11,29 +11,40 @@ const space_mono = Space_Mono({
 
 const LocalTime = () => {
     const [currentTime, setCurrentTime] = useState<Date | null>(null)
+    const [timezone, setTimezone] = useState<string>("")
 
     useEffect(() => {
-      setCurrentTime(new Date())
+      const updateTime = () => {
+        const now = new Date()
+        setCurrentTime(now)
+        setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+      }
       
-      const interval = setInterval(() => {
-        setCurrentTime(new Date())
-      }, 1000)
+      updateTime()
+      const interval = setInterval(updateTime, 1000)
   
       return () => clearInterval(interval)
     }, [])
+    
   return (
-    <div className={`flex gap-1 md:gap-2 items-center text-[#00FFD1]/65 mx-7 my-3 ${space_mono.className} font-medium`}>
+    <div className={`flex gap-1 md:gap-2 items-center text-[#64FFDA]/65 mx-7 my-3 ${space_mono.className} font-medium`} dir="ltr" style={{ position: 'fixed', top: '0.75rem', left: '1.75rem', right: 'auto' }}>
       <a 
         href="https://www.google.com/search?q=time" 
         target="_blank" 
-        className="hover:text-[#00FFD1]/90 transition-all duration-100"
+        className="hover:text-[#64FFDA]/90 transition-all duration-100"
       >
         <span className="md:text-sm text-base">
-          {currentTime ? currentTime.toLocaleString([],{ hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "--:--:--"}
+          {currentTime ? currentTime.toLocaleString([],{ 
+            hour: "2-digit", 
+            minute: "2-digit", 
+            second: "2-digit",
+            timeZone: timezone 
+          }) : "--:--:--"}
         </span>
       </a>
-      <span className={`hidden md:block text-sm ${space_mono.className}`}> (GMT+5:30)</span>
-      <span className={`hidden md:block text-sm ${space_mono.className}`}> Nagpur, India</span>
+      <span className={`hidden md:block text-sm ${space_mono.className}`}>
+        {timezone ? ` (${timezone})` : ""}
+      </span>
     </div>
   )
 }

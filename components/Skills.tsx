@@ -1,63 +1,54 @@
 "use client"
 
-import React from 'react';
-import { Card, CardContent } from "@/components/ui/card"
+import React from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
-const Skills = () => {
+const allSkills = [
+  { name: "Flutter", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+  { name: "Dart", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" },
+  { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+  { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+  { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "Vite", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" },
+  { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+  { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+  { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
+  { name: "Supabase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
+  { name: "SQLite", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" },
+  { name: "AWS", logo: "/aws-svgrepo-com.svg" },
+  { name: "Material Design", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" },
+]
 
-  const allSkills = [
-    
-    { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-    { name: "Go", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" },
-    
-    // Frontend
-    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-    { name: "Tailwind CSS", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" },
-    
-    // Backend
-    { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-    { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-    { name: "Hono", logo: "https://raw.githubusercontent.com/honojs/hono/main/docs/images/hono-title.png" },
-    { name: "tRPC", logo: "https://trpc.io/img/logo.svg" },
-    { name: "REST", logo: "https://img.icons8.com/color/48/000000/api-settings.png" },
-    { name: "Bun", logo: "https://bun.sh/logo.svg" },
-    
-    // Databases
-    { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-    { name: "PostgreSQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-    { name: "Redis", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
-    { name: "Prisma", logo: "https://www.prisma.io/images/favicon-32x32.png" },
-    
-    // DevOps & Cloud
-    { name: "AWS", logo: "/aws-svgrepo-com.svg" },
-    { name: "Cloudflare", logo: "https://www.vectorlogo.zone/logos/cloudflare/cloudflare-icon.svg" },
-    { name: "Nginx", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" },
-    { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
-  ];
+export default function Skills() {
+  const { t } = useLanguage()
 
   return (
     <div className="my-8">
-      <h2 className="text-2xl text-[#64FFDA] font-bold mb-4 decoration-double underline underline-offset-8">Skills</h2>
-      
-      <div className="flex flex-wrap gap-2">
+      <h2 className="text-2xl font-bold text-[#E1E3E5] mb-1">
+        {t('skills.title')}
+      </h2>
+      <p className="text-zinc-400 text-sm mb-5">
+        {t('skills.subtitle') || 'The tech arsenal behind my builds!'}
+      </p>
+      <div className="flex flex-wrap gap-3">
         {allSkills.map((skill, index) => (
-          <div 
-            key={index} 
-            className="flex items-center gap-2 py-1.5 px-2.5 bg-[#1F1F1F] rounded-md border border-[#2A2A2A] hover:border-[#3A3A3A] transition-colors"
+          <div
+            key={index}
+            className="inline-flex items-center gap-2 py-2 px-3 rounded-lg bg-[#1a1a1a] border border-zinc-700/80 text-[#E1E3E5] text-sm font-medium transition-all duration-200 hover:border-[#64FFDA]/40 hover:scale-[1.02]"
           >
-            <img 
-              src={skill.logo} 
-              alt={`${skill.name} logo`} 
-              className="w-4 h-4 object-contain"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={skill.logo}
+              alt=""
+              className="w-5 h-5 object-contain flex-shrink-0"
             />
-            <span className="text-[#E1E3E5] text-xs font-medium">{skill.name}</span>
+            <span>{skill.name}</span>
           </div>
         ))}
       </div>
     </div>
-  );
-};
-
-export default Skills; 
+  )
+}
