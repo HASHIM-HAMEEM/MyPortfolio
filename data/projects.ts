@@ -62,7 +62,7 @@ export const projects: Project[] = [
     },
     href: 'https://github.com/HASHIM-HAMEEM/LibraryApp',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/LibraryApp',
-    image: '/projects/library dashbaord.png',
+    image: '/projects/library-dashboard.png',
     tags: ['React 18', 'TypeScript', 'Vite', 'Supabase', 'Tailwind CSS']
   },
   {
