@@ -63,11 +63,11 @@ export function ProjectCard({
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Running':
-        return 'bg-emerald-500'
+        return 'bg-[var(--text-primary)]'
       case 'In Development':
-        return 'bg-amber-500'
+        return 'bg-[var(--text-muted)]'
       case 'Open Source':
-        return 'bg-blue-500'
+        return 'bg-[var(--text-secondary)]'
       default:
         return 'bg-zinc-500'
     }
@@ -75,20 +75,18 @@ export function ProjectCard({
 
   return (
     <Card className={cn(
-      "flex flex-col overflow-hidden border border-zinc-700/80 bg-[#121212] text-[#E1E3E5] shadow-lg",
-      "transition-all duration-300 ease-out h-full relative",
-      "hover:shadow-xl hover:shadow-[#64FFDA]/10 hover:border-[#64FFDA]/30",
+      "flex flex-col overflow-hidden portfolio-card portfolio-card-hover h-full relative",
       className
     )}>
       {image && (
-        <Link href={href || "#"} className="block w-full overflow-hidden rounded-t-xl">
-          <div className="relative h-44 w-full overflow-hidden bg-[#1a1a1a] transition-transform duration-300 hover:scale-[1.02]">
+        <Link href={href || "#"} className="block w-full overflow-hidden">
+          <div className="relative h-48 w-full overflow-hidden bg-[var(--surface-muted)]">
             <Image
               src={image}
               alt={title}
               width={600}
               height={260}
-              className="h-full w-full object-cover object-top"
+              className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-[1.025]"
             />
           </div>
         </Link>
@@ -96,8 +94,8 @@ export function ProjectCard({
 
       <CardHeader className="px-5 pt-4 pb-2">
         <div className="flex flex-wrap items-start justify-between gap-2">
-          <CardTitle className="text-lg font-bold text-[#E1E3E5] leading-tight pr-2">
-            <Link href={href || "#"} className="hover:text-[#64FFDA] transition-colors">
+          <CardTitle className="text-lg font-semibold text-[var(--text-primary)] leading-tight pr-2 tracking-normal">
+            <Link href={href || "#"} className="hover:accent-text transition-colors">
               {title}
             </Link>
           </CardTitle>
@@ -107,7 +105,7 @@ export function ProjectCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 href={displayLink}
-                className="text-zinc-400 hover:text-[#64FFDA] transition-colors p-1"
+                className="text-muted-theme hover:accent-text transition-colors p-1"
                 aria-label={`Visit ${title}`}
               >
                 <FaExternalLinkAlt size={14} />
@@ -118,7 +116,7 @@ export function ProjectCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 href={repoUrl}
-                className="text-zinc-400 hover:text-[#64FFDA] transition-colors p-1"
+                className="text-muted-theme hover:accent-text transition-colors p-1"
                 aria-label={`${title} GitHub repo`}
               >
                 <FaGithub size={16} />
@@ -126,11 +124,11 @@ export function ProjectCard({
             )}
           </div>
         </div>
-        <div className="text-sm text-zinc-300 leading-relaxed mt-1">
+        <div className="text-sm text-soft leading-relaxed mt-1">
           {description}
         </div>
         <div className="flex items-center gap-2 mt-3">
-          <span className="inline-flex items-center gap-1.5 text-xs text-zinc-400">
+          <span className="inline-flex items-center gap-1.5 text-xs text-muted-theme">
             <span className={cn("h-1.5 w-1.5 rounded-full", getStatusColor(status))} />
             {status}
           </span>
@@ -145,7 +143,7 @@ export function ProjectCard({
               return (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-[#1F1F1F] border border-zinc-700/80 text-[10px] font-medium text-zinc-300"
+                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md soft-panel text-[10px] font-medium text-soft"
                 >
                   {iconUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -167,7 +165,7 @@ export function ProjectCard({
               key={idx}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-[#64FFDA] hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs accent-text hover:underline"
             >
               {linkItem.icon}
               {linkItem.type}

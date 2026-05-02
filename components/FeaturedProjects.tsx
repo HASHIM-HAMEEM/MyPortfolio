@@ -41,7 +41,7 @@ const FeaturedProjects = () => {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-bold text-[#E1E3E5] mb-5">{t('projects.title')}</h2>
+      <h2 className="text-2xl font-semibold section-title mb-5">{t('projects.title')}</h2>
 
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -69,7 +69,7 @@ const FeaturedProjects = () => {
       <div className="mt-8 flex justify-center">
         <Link
           href="/projects"
-          className="text-[#64FFDA] hover:text-[#64FFDA]/80 text-sm font-medium transition-colors"
+          className="accent-text hover:opacity-80 text-sm font-medium transition-opacity"
         >
           {t('projects.viewAll')}
         </Link>

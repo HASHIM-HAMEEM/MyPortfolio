@@ -24,9 +24,8 @@ export default function ScrollToTop() {
       className={`
         fixed bottom-20 right-6 z-40
         w-10 h-10 rounded-full
-        bg-[#1a1a1a] border border-zinc-700/80
-        text-zinc-400 hover:text-[#64FFDA] hover:border-[#64FFDA]/40
-        shadow-lg shadow-black/20
+        portfolio-card portfolio-card-hover
+        text-muted-theme hover:accent-text
         flex items-center justify-center
         transition-all duration-300 ease-out
         ${visible

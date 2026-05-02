@@ -11,13 +11,127 @@ export interface BlogPost {
 
 export const blogs: BlogPost[] = [
   {
-    id: "1",
-    title: "Building Production-Ready Flutter Apps with Riverpod",
-    date: "January 28, 2025",
-    description: "State management lessons learned from building BillExpert with 10,000+ users. How Riverpod transformed our app architecture and improved maintainability.",
-    content: `# Building Production-Ready Flutter Apps with Riverpod
+    id: "15",
+    title: "Flutter: Error Messages People Actually Read",
+    date: "May 1, 2026",
+    description: "Users do not live in the console. I keep on-screen copy short, add retry when failure is usually temporary, and save stack traces for logs and crash tools.",
+    content: `# Flutter: Error Messages People Actually Read
 
-When I started building BillExpert, I knew state management would be crucial for a complex invoice management app. After trying various approaches, Riverpod proved to be the game-changer.
+A failed network call is not an excuse to dump a \`SocketException\` into a snackbar.
+
+## What I aim for
+
+- **One plain sentence** — what broke, in ordinary language.
+- **Retry** when the problem is often transient (timeouts, flaky Wi‑Fi).
+- **Technical detail** elsewhere: expander, support sheet, or your crash reporter — not the default screen.
+
+## Structure
+
+Model async UI as loading / success / error. Give the error branch copy, optional secondary action, and do not block the rest of the app.
+
+## Habits
+
+Log the full exception for yourself. Show the human a path forward when one exists.
+
+`,
+    tags: ["Flutter", "UX", "Errors", "Mobile"],
+    readTime: 4,
+    slug: "flutter-error-messages-people-actually-read",
+  },
+  {
+    id: "16",
+    title: "Next.js App Router: Layouts, Loading, and Boundaries",
+    date: "April 18, 2026",
+    description: "How I use nested layouts, route-level loading UI, and clear server vs client boundaries so pages stay fast and easy to change.",
+    content: `# Next.js App Router: Layouts, Loading, and Boundaries
+
+The App Router pays off when structure matches how teams think about screens.
+
+## Layouts
+
+Shared chrome (nav, shell) lives in nested \`layout.tsx\` files. I avoid duplicating headers per page when the route tree already tells the story.
+
+## Loading
+
+\`loading.tsx\` next to a slow segment beats a global spinner. Users see where the work is happening.
+
+## Server and client
+
+Default to Server Components. I mark \`'use client'\` only where interaction or browser APIs require it — smaller bundles, less accidental waterfalls.
+
+## Takeaway
+
+Let the filesystem carry structure; keep components honest about where they run.
+
+`,
+    tags: ["Next.js", "React", "App Router", "Web"],
+    readTime: 5,
+    slug: "nextjs-app-router-layouts-loading-boundaries",
+  },
+  {
+    id: "17",
+    title: "Choosing Local Storage in Flutter",
+    date: "March 26, 2026",
+    description: "Hive, SQLite (Drift), or SharedPreferences — not a popularity contest. A practical split by shape of data, queries, and how often you ship migrations.",
+    content: `# Choosing Local Storage in Flutter
+
+There is no universal best store. There is a best fit for the shape of your data.
+
+## SharedPreferences (or secure storage)
+
+Small flags, tokens, last-selected account, theme key. Key–value, read rarely in bulk, no complex queries.
+
+## Hive
+
+Typed boxes, offline cache, medium-sized objects, sync queues. You want structure without SQL and can accept careful migration planning.
+
+## SQLite / Drift
+
+Relational data, reporting-style queries, large tables, integrity constraints. Up-front schema work pays off here.
+
+## Offline-first stacks
+
+My bias: write locally first, sync when online, surface sync state honestly in the UI — whatever engine sits underneath.
+
+`,
+    tags: ["Flutter", "Hive", "SQLite", "Architecture"],
+    readTime: 5,
+    slug: "choosing-local-storage-in-flutter",
+  },
+  {
+    id: "18",
+    title: "Flutter Theming: Light, Dark, and System",
+    date: "March 4, 2026",
+    description: "One ThemeData pipeline: Material 3 color roles, listening to platform brightness, and avoiding hard-coded colors in leaf widgets.",
+    content: `# Flutter Theming: Light, Dark, and System
+
+Hard-coded \`Colors.grey\` in fourteen files guarantees a painful redesign.
+
+## Single source
+
+Define light and dark \`ThemeData\` (or \`ColorScheme.fromSeed\`) in one place. Read semantic roles — \`surface\`, \`onSurface\`, \`primary\` — in widgets.
+
+## System setting
+
+\`MediaQuery.platformBrightnessOf(context)\` or \`themeMode: ThemeMode.system\` in MaterialApp respects user choice without extra toggles — optional in-app override comes later.
+
+## Accessibility
+
+Contrast matters in both schemes. Test charts and icons in dark mode, not only the home screen.
+
+`,
+    tags: ["Flutter", "UI", "Dark Mode", "Material"],
+    readTime: 4,
+    slug: "flutter-theming-light-dark-and-system",
+  },
+  {
+    id: "1",
+    title: "Riverpod on BillExpert: State That Survived Shipping",
+    date: "January 28, 2025",
+    description: "How Riverpod handled invoices, rates, PDF flow, and offline sync in a live app — patterns we kept because they survived real users and tests.",
+    content: `# Riverpod on BillExpert: State That Survived Shipping
+
+When I started building BillExpert, state management was the bottleneck for invoices, rates, and sync.
 
 ## Why Riverpod?
 
@@ -48,19 +162,19 @@ final exchangeRateProvider = FutureProvider<Map<String, double>>((ref) {
 - **Keep providers focused and single-responsibility**
 - **Test your providers thoroughly**
 
-Riverpod made our codebase more maintainable and our team more productive.`,
+Riverpod fit that work: compile-time safety, testable providers, and room to grow without rewriting the world.`,
     tags: ["Flutter", "Riverpod", "State Management", "Mobile Development"],
     readTime: 5,
     slug: "building-production-ready-flutter-apps-with-riverpod"
   },
   {
     id: "2",
-    title: "Integrating AI APIs in Flutter Apps",
+    title: "Gemini in the Maududi Library App",
     date: "January 21, 2025",
-    description: "My experience integrating Gemini API in Maududi Library app. Learn how to build AI-powered features that enhance user experience without compromising performance.",
-    content: `# Integrating AI APIs in Flutter Apps
+    description: "Hooking up Gemini for on-device help with dense text: prompts, rate limits, offline behavior, and not promising more than the model can safely give.",
+    content: `# Gemini in the Maududi Library App
 
-Building Maududi Library taught me valuable lessons about integrating AI APIs in mobile applications. Here's how I implemented Gemini API for an AI-powered assistant.
+The Maududi Library app needed a calm way to orient readers inside long, difficult passages.
 
 ## The Challenge
 
@@ -86,19 +200,19 @@ class AIService {
 - **Privacy and data security**
 - **Performance optimization**
 
-The AI integration significantly improved user engagement and made complex content more accessible.`,
+The assistant helped engagement without turning every screen into a chat app.`,
     tags: ["Flutter", "AI", "Gemini API", "Mobile Development"],
     readTime: 4,
     slug: "integrating-ai-apis-in-flutter-apps"
   },
   {
     id: "3",
-    title: "Offline-First Architecture in Mobile Apps",
+    title: "Offline-First in BillExpert with Hive",
     date: "January 15, 2025",
-    description: "How I implemented offline-first architecture in BillExpert using Hive database. Learn strategies for building apps that work seamlessly without internet connection.",
-    content: `# Offline-First Architecture in Mobile Apps
+    description: "Local writes first, sync when the network returns, and honest UI when two devices disagree — Hive as the spine for invoices in the field.",
+    content: `# Offline-First in BillExpert with Hive
 
-BillExpert needed to work reliably even with poor internet connectivity. Here's how I implemented offline-first architecture using Hive.
+BillExpert had to run where connectivity does not.
 
 ## Why Offline-First?
 
@@ -130,19 +244,19 @@ class Invoice extends HiveObject {
 - Handle conflicts gracefully
 - Show sync status to users
 
-This approach ensured BillExpert worked reliably for users worldwide.`,
+That recipe beat asking users to find perfect signal before logging a sale.`,
     tags: ["Flutter", "Hive", "Offline", "Database", "Architecture"],
     readTime: 6,
     slug: "offline-first-architecture-in-mobile-apps"
   },
   {
     id: "4",
-    title: "Building Flutter Packages: From Idea to Publication",
+    title: "From Idea to pub.dev: Flutter Welcome Kit & Islamic Kit",
     date: "January 8, 2025",
-    description: "The complete journey of creating Flutter Welcome Kit and Islamic Kit packages. Learn how to build, test, and publish packages that serve the community.",
-    content: `# Building Flutter Packages: From Idea to Publication
+    description: "Shipping packages is half API design and half documentation. What I learned publishing Flutter Welcome Kit and Islamic Kit for others to depend on.",
+    content: `# From Idea to pub.dev: Flutter Welcome Kit & Islamic Kit
 
-Creating Flutter Welcome Kit and Islamic Kit taught me the complete package development lifecycle. Here's my process for building packages that serve the community.
+Welcome Kit and Islamic Kit started as repeated code across apps.
 
 ## The Idea Phase
 
@@ -181,19 +295,19 @@ class WelcomeKit extends StatefulWidget {
 - Follow semantic versioning
 - Submit to pub.dev
 
-Both packages now serve thousands of developers worldwide.`,
+Pub is unforgiving about breaking changes — plan semver and changelogs like you mean them.`,
     tags: ["Flutter", "Dart", "Package Development", "Open Source"],
     readTime: 7,
     slug: "building-flutter-packages-from-idea-to-publication"
   },
   {
     id: "5",
-    title: "Multi-Currency Support in Flutter Apps",
+    title: "Multi-Currency Invoices in Flutter",
     date: "December 30, 2024",
-    description: "Implementing real-time exchange rates and multi-currency support in BillExpert. Learn how to handle currency conversion, formatting, and user preferences.",
-    content: `# Multi-Currency Support in Flutter Apps
+    description: "Rates, formatting, caches, and user defaults so totals stay honest when the network fails or a user switches currency mid-session.",
+    content: `# Multi-Currency Invoices in Flutter
 
-BillExpert needed to support multiple currencies for international clients. Here's how I implemented real-time exchange rates and currency conversion.
+International invoices mean rates move, symbols differ, and rounding fights you if you are careless.
 
 ## The Requirements
 
@@ -225,19 +339,19 @@ class CurrencyService {
 - **Proper number formatting**
 - **Currency symbol display**
 
-This feature made BillExpert truly international.`,
+Solid formatting and cached rates keep trust high when APIs stall.`,
     tags: ["Flutter", "API Integration", "Currency", "Internationalization"],
     readTime: 5,
     slug: "multi-currency-support-in-flutter-apps"
   },
   {
     id: "6",
-    title: "Full-Stack Development with Next.js and Supabase",
+    title: "IQRA Library: Next.js, Supabase, and Realtime",
     date: "December 18, 2024",
-    description: "Building the IQRA Library Dashboard with Next.js and Supabase. Learn how to create modern web applications with real-time features and authentication.",
-    content: `# Full-Stack Development with Next.js and Supabase
+    description: "Admin dashboard paired with the mobile app: Supabase auth, live rows, and avoiding two sources of truth for student records.",
+    content: `# IQRA Library: Next.js, Supabase, and Realtime
 
-The IQRA Library Dashboard required real-time synchronization with the mobile app. Here's how I built it using Next.js and Supabase.
+The IQRA Library stack needed the web admin and the mobile app to read the same truth.
 
 ## Architecture Overview
 
@@ -265,19 +379,19 @@ const { data, error } = useSubscription(
 - **QR code generation**
 - **Analytics dashboard**
 
-This full-stack approach ensured seamless integration between mobile and web platforms.`,
+Supabase carried auth, Postgres, and realtime channels without reinventing sockets.`,
     tags: ["Next.js", "Supabase", "TypeScript", "Full-Stack", "React"],
     readTime: 6,
     slug: "full-stack-development-with-nextjs-and-supabase"
   },
   {
     id: "7",
-    title: "PDF Generation and Document Handling in Flutter",
+    title: "PDF Invoices in Flutter (Without Freezing the UI)",
     date: "December 9, 2024",
-    description: "Creating professional invoices and documents in BillExpert. Learn how to generate PDFs, handle templates, and provide download functionality.",
-    content: `# PDF Generation and Document Handling in Flutter
+    description: "BillExpert document pipeline: templates, pagination, and moving PDF work off the main isolate when exports get heavy.",
+    content: `# PDF Invoices in Flutter (Without Freezing the UI)
 
-BillExpert needed to generate professional invoices and receipts. Here's how I implemented PDF generation with custom templates.
+Invoices must look sharp and export reliably — not block gestures while building.
 
 ## The Challenge
 
@@ -321,19 +435,19 @@ Future<Uint8List> generateInvoicePDF(Invoice invoice) async {
 - **Company branding**
 - **Email integration**
 
-Professional document generation significantly improved user experience.`,
+Clear loading states beat a frozen screen during big exports.`,
     tags: ["Flutter", "PDF", "Document Generation", "Templates"],
     readTime: 5,
     slug: "pdf-generation-and-document-handling-in-flutter"
   },
   {
     id: "8",
-    title: "Clean Architecture in Flutter: Lessons Learned",
+    title: "Flutter Feature Folders That Stay Navigable",
     date: "November 29, 2024",
-    description: "How I structured my Flutter projects for maintainability and scalability. Learn about folder organization, dependency injection, and testing strategies.",
-    content: `# Clean Architecture in Flutter: Lessons Learned
+    description: "Layers for data, domain, and UI per feature — where I split modules, how I name them, and what I stop importing across feature lines.",
+    content: `# Flutter Feature Folders That Stay Navigable
 
-After building multiple Flutter apps, I've learned the importance of clean architecture. Here's how I structure my projects for long-term maintainability.
+Clean architecture is not a certificate — it is a way to find files six months later.
 
 ## Project Structure
 
@@ -381,19 +495,19 @@ class InvoiceRepositoryImpl implements InvoiceRepository {
 }
 \`\`\`
 
-Clean architecture makes code more maintainable and teams more productive.`,
+Tests and refactors hurt less when boundaries stay boring.`,
     tags: ["Flutter", "Architecture", "Clean Code", "Best Practices"],
     readTime: 6,
     slug: "clean-architecture-in-flutter-lessons-learned"
   },
   {
     id: "9",
-    title: "Optimizing Next.js Applications for Performance",
+    title: "Next.js Performance: What I Actually Ship",
     date: "November 18, 2024",
-    description: "Deep dive into Next.js performance optimization techniques. From image optimization to code splitting and server components.",
-    content: `# Optimizing Next.js Applications for Performance
+    description: "next/image, dynamic imports for heavy charts, and Server Components where they cut real bytes to the browser — practical Core Web Vitals work.",
+    content: `# Next.js Performance: What I Actually Ship
 
-Performance is key for user retention. Here is how I optimize Next.js applications for maximum speed and efficiency.
+Performance work is boring until users stop bouncing.
 
 ## Image Optimization
 
@@ -435,19 +549,19 @@ const HeavyChart = dynamic(() => import('./HeavyChart'), {
 })
 \`\`\`
 
-By implementing these strategies, we can achieve excellent Core Web Vitals scores.`,
+Small habits compound into green metrics.`,
     tags: ["Next.js", "Performance", "React", "Web Development"],
     readTime: 5,
     slug: "optimizing-nextjs-applications-for-performance"
   },
   {
     id: "10",
-    title: "The Power of TypeScript in Modern Web Development",
+    title: "TypeScript on Web Projects by Default",
     date: "November 6, 2024",
-    description: "Why I use TypeScript for all my projects. Exploring type safety, developer experience, and how it prevents bugs before they happen.",
-    content: `# The Power of TypeScript in Modern Web Development
+    description: "Types pay rent at refactor time: props match APIs, renames are complete, and deploys stop being roulette when the backend shifts shape.",
+    content: `# TypeScript on Web Projects by Default
 
-TypeScript has become an indispensable tool in my development workflow. It's not just about types; it's about confidence.
+JavaScript is fine until a vendor changes a field name on Friday afternoon.
 
 ## Type Safety
 
@@ -476,7 +590,7 @@ When changing a component's props or a function's signature, TypeScript immediat
 
 ## Conclusion
 
-While there is a learning curve, the long-term benefits of TypeScript far outweigh the initial setup cost.`,
+The learning curve exists; the alternative is production surprise.`,
     tags: ["TypeScript", "JavaScript", "Web Development", "Programming"],
     readTime: 4,
     slug: "the-power-of-typescript-in-modern-web-development"

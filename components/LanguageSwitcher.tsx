@@ -9,11 +9,11 @@ const LanguageSwitcher = () => {
   return (
     <button
       onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#1a1a1a]/90 backdrop-blur-sm border border-[#64FFDA]/30 hover:border-[#64FFDA] text-[#E1E3E5] px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-[#64FFDA]/20 group"
+      className="fixed top-3 right-7 z-50 inline-flex items-center gap-1.5 pl-2 pr-2.5 py-1 rounded-full text-xs font-medium transition-all duration-200 portfolio-card portfolio-card-hover group"
       aria-label="Switch Language"
     >
-      <FaGlobe className="text-[#64FFDA] group-hover:rotate-12 transition-transform duration-300" />
-      <span className="pb-0.5">{language === 'en' ? 'العربية' : 'English'}</span>
+      <FaGlobe className="h-3.5 w-3.5 shrink-0 accent-text group-hover:rotate-12 transition-transform duration-300" />
+      <span className="leading-none">{language === 'en' ? 'العربية' : 'English'}</span>
     </button>
   )
 }

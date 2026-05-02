@@ -1,44 +1,87 @@
 "use client"
 
-import React from 'react'
-import GitHubCalendar from 'react-github-calendar'
+import React, { useEffect, useMemo, useState } from 'react'
+import AggregatedGitHubCalendar from '@/components/AggregatedGitHubCalendar'
 import { useLanguage } from '@/contexts/LanguageContext'
-
-const GITHUB_USERNAME = 'HASHIM-HAMEEM'
+import { useTheme } from 'next-themes'
+import { Github } from 'lucide-react'
+import {
+  GITHUB_CONTRIBUTION_USERNAMES,
+  GITHUB_PRIMARY_USERNAME,
+} from '@/config/github'
+import type { GithubStatsPayload } from '@/lib/github-stats-payload'
 
 export default function GitHubActivitySection() {
   const { t } = useLanguage()
+  const { resolvedTheme } = useTheme()
+  const colorScheme = resolvedTheme === 'light' ? 'light' : 'dark'
+  const calendarTheme = {
+    light: ['#e8e8e8', '#c7c7c7', '#9a9a9a', '#5f5f5f', '#111111'],
+    dark: ['#1a1a1a', '#333333', '#6b6b6b', '#a3a3a3', '#f5f5f5'],
+  }
+
+  const [liveStats, setLiveStats] = useState<GithubStatsPayload | null>(null)
+  const [statsApiFailed, setStatsApiFailed] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    fetch('/api/github-stats')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((data: GithubStatsPayload) => {
+        if (!cancelled) setLiveStats(data)
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setLiveStats(null)
+          setStatsApiFailed(true)
+        }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const calendarPreload = useMemo(
+    () =>
+      liveStats
+        ? {
+            contributions: liveStats.calendarContributions,
+            totalLastYear: liveStats.contributionsLastYear,
+          }
+        : undefined,
+    [liveStats],
+  )
 
   return (
-    <section className="py-6">
-      <div className="rounded-xl border border-zinc-700/80 bg-[#121212] p-5 md:p-6 overflow-hidden shadow-lg hover:border-[#64FFDA]/30 transition-colors duration-300">
+    <section className="py-4">
+      <div className="portfolio-card portfolio-card-hover rounded-xl p-5 md:p-6 overflow-hidden">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6">
-          <h2 className="text-xl font-bold text-[#E1E3E5] flex items-center gap-2">
-            <span className="text-[#64FFDA]">❖</span>
+          <h2 className="text-xl font-semibold section-title flex items-center gap-2">
+            <Github className="h-5 w-5 accent-text" />
             {t('devCorner.githubActivity') || 'GitHub Activity'}
           </h2>
-          <a 
-            href={`https://github.com/${GITHUB_USERNAME}`}
+          <a
+            href={`https://github.com/${GITHUB_PRIMARY_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-zinc-400 font-mono bg-zinc-800/50 px-3 py-1 rounded hover:text-[#64FFDA] transition-colors"
+            className="text-sm text-muted-theme font-mono soft-panel px-3 py-1 rounded-md hover:accent-text transition-colors w-fit"
           >
-            @{GITHUB_USERNAME}
+            @{GITHUB_PRIMARY_USERNAME}
           </a>
         </div>
-        
+
         <div className="flex justify-center w-full overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent">
           <div className="min-w-fit">
-            <GitHubCalendar
-              username={GITHUB_USERNAME}
-              colorScheme="dark"
+            <AggregatedGitHubCalendar
+              usernames={GITHUB_CONTRIBUTION_USERNAMES}
+              colorScheme={colorScheme}
               fontSize={12}
-              blockSize={11}
-              blockMargin={4}
-              theme={{
-                light: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-                dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
-              }}
+              blockSize={10}
+              blockMargin={3}
+              showWeekdayLabels
+              theme={calendarTheme}
+              preloaded={calendarPreload}
+              waitForPreload={!statsApiFailed}
             />
           </div>
         </div>

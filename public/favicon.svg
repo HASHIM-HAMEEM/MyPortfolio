@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="H">
+  <defs>
+    <linearGradient id="hGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26d4b4"/>
+      <stop offset="100%" stop-color="#64ffda"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="#0f1419"/>
+  <text
+    x="16"
+    y="16"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="system-ui, Segoe UI, sans-serif"
+    font-size="18"
+    font-weight="700"
+    fill="url(#hGrad)"
+  >H</text>
+</svg>

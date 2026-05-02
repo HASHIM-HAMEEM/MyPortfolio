@@ -27,11 +27,11 @@ const LocalTime = () => {
     }, [])
     
   return (
-    <div className={`flex gap-1 md:gap-2 items-center text-[#64FFDA]/65 mx-7 my-3 ${space_mono.className} font-medium`} dir="ltr" style={{ position: 'fixed', top: '0.75rem', left: '1.75rem', right: 'auto' }}>
+    <div className={`flex gap-1 md:gap-2 items-center accent-text opacity-70 mx-7 my-3 ${space_mono.className} font-medium`} dir="ltr" style={{ position: 'fixed', top: '0.75rem', left: '1.75rem', right: 'auto' }}>
       <a 
         href="https://www.google.com/search?q=time" 
         target="_blank" 
-        className="hover:text-[#64FFDA]/90 transition-all duration-100"
+        className="hover:opacity-100 transition-all duration-100"
       >
         <span className="md:text-sm text-base">
           {currentTime ? currentTime.toLocaleString([],{ 

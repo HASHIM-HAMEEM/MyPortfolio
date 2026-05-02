@@ -23,7 +23,7 @@ export const SpotlightBorder = ({ children, className = "" }: SpotlightBorderPro
       <motion.div
         className="absolute inset-0 rounded-lg"
         style={{
-          background: 'linear-gradient(90deg, transparent, #64FFDA, transparent)',
+          background: 'linear-gradient(90deg, transparent, rgb(var(--brand-rgb) / 0.7), transparent)',
           backgroundSize: '200% 100%',
         }}
         animate={{

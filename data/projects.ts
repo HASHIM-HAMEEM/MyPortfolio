@@ -31,7 +31,7 @@ export const projects: Project[] = [
     href: 'https://play.google.com/store/apps/details?id=com.hashimhameem.billexpert&pcampaignid=web_share',
     link: 'https://play.google.com/store/apps/details?id=com.hashimhameem.billexpert&pcampaignid=web_share',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/BillExpertApp',
-    image: '/projects/billexpert-new.png',
+    image: '/projects/generated/billexpert-gpt.png',
     tags: ['Flutter', 'Riverpod', 'Hive', 'Material Design 3', 'AdMob']
   },
   {
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     },
     href: 'https://github.com/HASHIM-HAMEEM/iqra-library-app',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/iqra-library-app',
-    image: '/projects/iqra-library.png',
+    image: '/projects/generated/iqra-library-gpt.png',
     tags: ['Flutter', 'Supabase', 'Riverpod', 'Material Design 3', 'Clean Architecture'],
     featured: true
   },
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     },
     href: 'https://github.com/HASHIM-HAMEEM/LibraryApp',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/LibraryApp',
-    image: '/projects/library-dashboard.png',
+    image: '/projects/generated/library-dashboard-gpt.png',
     tags: ['React 18', 'TypeScript', 'Vite', 'Supabase', 'Tailwind CSS']
   },
   {
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     href: 'https://pub.dev/packages/flutter_welcome_kit',
     link: 'https://pub.dev/packages/flutter_welcome_kit',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/flutter_welcome_kit',
-    image: '/projects/flutterwelcome.png',
+    image: '/projects/generated/flutter-welcome-kit-gpt.png',
     tags: ['Flutter', 'Dart', 'Mobile Development', 'UI/UX', 'Accessibility'],
     featured: true
   },
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     href: 'https://pub.dev/packages/islamic_kit',
     link: 'https://pub.dev/packages/islamic_kit',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/islamic_kit',
-    image: '/projects/islamickit.png',
+    image: '/projects/generated/islamic-kit-gpt.png',
     tags: ['Flutter', 'Dart', 'Islamic APIs', 'Prayer Times', 'Qibla Compass'],
     featured: true
   },
@@ -111,7 +111,7 @@ export const projects: Project[] = [
     },
     href: 'https://play.google.com/store/apps/details?id=com.molanamodudi.literature&pcampaignid=web_share',
     link: 'https://play.google.com/store/apps/details?id=com.molanamodudi.literature&pcampaignid=web_share',
-    image: '/projects/MMTLogo.png',
+    image: '/projects/generated/maududi-library-gpt.png',
     tags: ['Flutter', 'Dart', 'Gemini API', 'Firebase']
   },
   {
@@ -127,7 +127,7 @@ export const projects: Project[] = [
     href: 'https://play.google.com/store/apps/details?id=com.iqbalbook.iqbal_literature&pcampaignid=web_share',
     link: 'https://play.google.com/store/apps/details?id=com.iqbalbook.iqbal_literature&pcampaignid=web_share',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/iqbal-literature',
-    image: '/projects/iqbalapp.webp',
+    image: '/projects/generated/iqbal-literature-gpt.png',
     tags: ['Flutter', 'Dart', 'Firebase', 'DeepSeek API', 'Gemini API']
   },
   {
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     },
     href: 'https://github.com/HASHIM-HAMEEM/file-management',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/file-management',
-    image: '/projects/Filemanager.png',
+    image: '/projects/generated/file-management-gpt.png',
     tags: ['Flutter', 'Java', 'SQLite', 'Provider', 'Material Design 3']
   },
   {
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     },
     href: 'https://play.google.com/store/apps/details?id=com.qataralnada.app&pcampaignid=web_share',
     link: 'https://play.google.com/store/apps/details?id=com.qataralnada.app&pcampaignid=web_share',
-    image: '/projects/QataralNada.png',
+    image: '/projects/generated/qatar-al-nada-gpt.png',
     tags: ['Flutter', 'Dart'],
     featured: true
   },
@@ -173,7 +173,7 @@ export const projects: Project[] = [
     },
     href: 'https://github.com/HASHIM-HAMEEM/hostel-management-system',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/hostel-management-system',
-    image: '/projects/HMS.png',
+    image: '/projects/generated/hms-gpt.png',
     tags: ['Node.js', 'MongoDB']
   },
   {
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     },
     href: 'https://iqbal-poetry.vercel.app',
     link: 'https://iqbal-poetry.vercel.app',
-    image: '/projects/iqbal-poetry.png',
+    image: '/projects/generated/iqbal-poetry-gpt.png',
     tags: ['Next.js', 'Tailwind CSS', 'React.js', 'TypeScript']
   },
   {
@@ -201,9 +201,9 @@ export const projects: Project[] = [
       en: 'Property management SaaS platform for modern property managers. Streamline operations, tenant portal, AI insights, maintenance tracking, digital leasing, and Stripe-powered payments.',
       ar: 'منصة SaaS لإدارة العقارات للمديرين المعاصرين. تبسيط العمليات، بوابة المستأجرين، رؤى الذكاء الاصطناعي، وتتبع الصيانة.'
     },
-    href: 'https://www.myrentalfind.com/',
-    link: 'https://www.myrentalfind.com/',
-    image: '/projects/myrentalfind.png',
+    href: 'https://www.myrentalfind.com/dev',
+    link: 'https://www.myrentalfind.com/dev',
+    image: '/projects/generated/my-rental-find-gpt.png',
     tags: ['Next.js', 'React', 'Tailwind CSS', 'Stripe', 'AI'],
     featured: true,
     status: 'Running'
@@ -220,7 +220,7 @@ export const projects: Project[] = [
     },
     href: 'https://github.com/HASHIM-HAMEEM/kamoosApp',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/kamoosApp',
-    image: '/projects/kamoos.png',
+    image: '/projects/generated/kamoos-app-gpt.png',
     tags: ['Flutter', 'Dart', 'Material Design 3'],
     status: 'Open Source'
   },
@@ -236,7 +236,7 @@ export const projects: Project[] = [
     },
     href: 'https://play.google.com/store/apps/details?id=com.tafaseer.app',
     link: 'https://tafaseer.web.app/',
-    image: '/projects/tafaseer.png',
+    image: '/projects/generated/tafaseer-gpt.png',
     tags: ['Flutter', 'Dart', 'Firebase'],
     status: 'Running'
   },
@@ -252,10 +252,20 @@ export const projects: Project[] = [
     },
     href: 'https://play.google.com/store/apps/details?id=app.iqbal.quranichub',
     link: 'https://alamaiqbal.vercel.app/',
-    image: '/projects/iqbal-app.png',
+    image: '/projects/generated/iqbal-app-gpt.png',
     tags: ['Flutter', 'Dart'],
     status: 'Running'
   }
 ]
+
+const STORE_LISTING_RE =
+  /play\.google\.com\/store|apps\.apple\.com\/app/i
+
+/** Store-backed listings in the portfolio catalog (auto-counted for stats). */
+export function countStoreListedProjects(): number {
+  return projects.filter((p) =>
+    STORE_LISTING_RE.test(p.link || p.href || ''),
+  ).length
+}
 
 export const getFeaturedProjects = () => projects.filter(p => p.featured)

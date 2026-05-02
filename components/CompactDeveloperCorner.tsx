@@ -1,37 +1,94 @@
 "use client"
 
-import React from 'react';
-import GitHubCalendar from 'react-github-calendar';
-import { motion } from 'framer-motion';
-import { useLanguage } from '@/contexts/LanguageContext';
+import React, { useEffect, useMemo, useState } from 'react'
+import AggregatedGitHubCalendar from '@/components/AggregatedGitHubCalendar'
+import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
+import {
+  GITHUB_CONTRIBUTION_USERNAMES,
+  GITHUB_PRIMARY_USERNAME,
+  GITHUB_TENURE_YEARS_PUBLIC,
+} from '@/config/github'
+import {
+  type GithubStatsPayload,
+  formatCompactCount,
+} from '@/lib/github-stats-payload'
 
 const CompactDeveloperCorner = () => {
-  const { t } = useLanguage();
-  const githubUsername = "HASHIM-HAMEEM";
+  const { t } = useLanguage()
+  const [liveStats, setLiveStats] = useState<GithubStatsPayload | null>(null)
+  const [statsApiFailed, setStatsApiFailed] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    fetch('/api/github-stats')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((data: GithubStatsPayload) => {
+        if (!cancelled) setLiveStats(data)
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setLiveStats(null)
+          setStatsApiFailed(true)
+        }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const calendarPreload = useMemo(
+    () =>
+      liveStats
+        ? {
+            contributions: liveStats.calendarContributions,
+            totalLastYear: liveStats.contributionsLastYear,
+          }
+        : undefined,
+    [liveStats],
+  )
 
   const stats = [
-    { labelKey: "devCorner.repos", value: "25+", icon: "📁" },
-    { labelKey: "devCorner.stars", value: "150+", icon: "⭐" },
-    { labelKey: "devCorner.contributions", value: "500+", icon: "💻" },
-    { labelKey: "devCorner.packages", value: "2", icon: "📦" }
-  ];
+    {
+      labelKey: 'devCorner.repos',
+      value: liveStats ? formatCompactCount(liveStats.totalRepos) : '—',
+      icon: '📁',
+    },
+    {
+      labelKey: 'devCorner.stars',
+      value: liveStats ? formatCompactCount(liveStats.totalStars) : '—',
+      icon: '⭐',
+    },
+    {
+      labelKey: 'devCorner.contributions',
+      value: liveStats
+        ? formatCompactCount(liveStats.contributionsLastYear)
+        : '—',
+      icon: '💻',
+    },
+    {
+      labelKey: 'devCorner.packages',
+      value: liveStats
+        ? formatCompactCount(liveStats.publishedPackageCount)
+        : '—',
+      icon: '📦',
+    },
+  ]
 
   const featuredPackages = [
     {
-      name: "Flutter Welcome Kit",
-      description: "Onboarding & tour guide kit for Flutter apps",
-      pubUrl: "https://pub.dev/packages/flutter_welcome_kit",
-      downloads: "1,000+",
-      likes: "15+"
+      packageId: 'flutter_welcome_kit',
+      name: 'Flutter Welcome Kit',
+      description: 'Onboarding & tour guide kit for Flutter apps',
+      pubUrl: 'https://pub.dev/packages/flutter_welcome_kit',
     },
     {
-      name: "Islamic Kit",
-      description: "Prayer times, Qibla compass & Islamic tools",
-      pubUrl: "https://pub.dev/packages/islamic_kit", 
-      downloads: "2,500+",
-      likes: "25+"
-    }
-  ];
+      packageId: 'islamic_kit',
+      name: 'Islamic Kit',
+      description: 'Prayer times, Qibla compass & Islamic tools',
+      pubUrl: 'https://pub.dev/packages/islamic_kit',
+    },
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -119,7 +176,7 @@ const CompactDeveloperCorner = () => {
             </div>
             <div className="text-left md:text-right">
               <div className="text-sm text-zinc-500 mb-1">{t('devCorner.githubActivity')}</div>
-              <div className="text-xl font-bold text-[#64FFDA]">@{githubUsername}</div>
+              <div className="text-xl font-bold text-[#64FFDA]">@{GITHUB_PRIMARY_USERNAME}</div>
             </div>
           </div>
         </div>
@@ -217,16 +274,18 @@ const CompactDeveloperCorner = () => {
               {t('devCorner.contributionCalendar')}
             </motion.h3>
           <div className="flex justify-center">
-            <GitHubCalendar
-              username={githubUsername}
+            <AggregatedGitHubCalendar
+              usernames={GITHUB_CONTRIBUTION_USERNAMES}
               colorScheme="dark"
               fontSize={10}
               blockSize={10}
               blockMargin={2}
               theme={{
                 light: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-                dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353']
+                dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
               }}
+              preloaded={calendarPreload}
+              waitForPreload={!statsApiFailed}
             />
           </div>
           </div>
@@ -301,8 +360,23 @@ const CompactDeveloperCorner = () => {
                   </div>
                   <p className="text-sm text-zinc-400 mb-4">{pkg.description}</p>
                   <div className="flex gap-6 text-sm">
-                    <span className="text-[#64FFDA] font-semibold">↓ {pkg.downloads}</span>
-                    <span className="text-zinc-400">❤ {pkg.likes}</span>
+                    <span className="text-[#64FFDA] font-semibold">
+                      ↓{' '}
+                      {liveStats
+                        ? `${formatCompactCount(
+                            liveStats.pubScores[pkg.packageId]
+                              ?.downloadCount30Days ?? 0,
+                          )} · 30d`
+                        : '—'}
+                    </span>
+                    <span className="text-zinc-400">
+                      ❤{' '}
+                      {liveStats
+                        ? formatCompactCount(
+                            liveStats.pubScores[pkg.packageId]?.likeCount ?? 0,
+                          )
+                        : '—'}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -361,7 +435,9 @@ const CompactDeveloperCorner = () => {
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              20,000+
+              {liveStats
+                ? formatCompactCount(liveStats.pubDownloads30DaysTotal)
+                : '—'}
             </motion.div>
             <div className="text-sm text-zinc-400 uppercase tracking-wider relative z-10">{t('devCorner.totalUsers')}</div>
           </motion.div>
@@ -383,7 +459,9 @@ const CompactDeveloperCorner = () => {
               }}
               transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
             >
-              10+
+              {liveStats
+                ? String(liveStats.publishedStoreAppsCount)
+                : '—'}
             </motion.div>
             <div className="text-sm text-zinc-400 uppercase tracking-wider relative z-10">{t('devCorner.publishedApps')}</div>
           </motion.div>
@@ -405,14 +483,14 @@ const CompactDeveloperCorner = () => {
               }}
               transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
             >
-              4+
+              {String(GITHUB_TENURE_YEARS_PUBLIC)}
             </motion.div>
             <div className="text-sm text-zinc-400 uppercase tracking-wider relative z-10">{t('devCorner.yearsExperience')}</div>
           </motion.div>
         </div>
         <div className="mt-8 text-center">
           <motion.a 
-            href={`https://github.com/${githubUsername}`} 
+            href={`https://github.com/${GITHUB_PRIMARY_USERNAME}`} 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#64FFDA]/10 border-2 border-[#64FFDA] text-[#64FFDA] rounded-xl hover:bg-[#64FFDA] hover:text-black transition-all duration-300 font-bold text-lg"
