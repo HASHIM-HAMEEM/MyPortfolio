@@ -19,11 +19,11 @@ const Intro = () => {
             <div className="flex-shrink-0 relative">
               <div className="rounded-full p-1 ring-1 ring-[rgb(var(--brand-rgb)/0.35)] bg-[var(--surface-muted)] transition-all duration-300">
                 <Image
-                  src="/profile-hashim.png"
+                  src="/profile-calligraphy.png"
                   width={160}
                   height={160}
-                  className="h-40 w-40 rounded-full object-cover border-2 border-[var(--surface)]"
-                  alt="Hashim Hameem profile"
+                  className="h-40 w-40 rounded-full object-cover border-2 border-[var(--surface)] bg-black"
+                  alt="Hashim Hameem calligraphy emblem"
                   priority
                 />
               </div>

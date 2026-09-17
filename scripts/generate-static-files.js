@@ -45,6 +45,38 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
     <atom:link href="${domain}/rss.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Fiqh.ai - Citation-Safe Scholarly Search Engine</title>
+      <link>${domain}/projects</link>
+      <pubDate>${dateUTC}</pubDate>
+      <guid>${domain}/projects/fiqhai</guid>
+      <description>Hybrid lexical and semantic search over classical Hanafi Fiqh texts with exact volume/page citations and Reciprocal Rank Fusion.</description>
+    </item>
+    
+    <item>
+      <title>Nile Learn - Nile Center Learning Platform</title>
+      <link>${domain}/projects</link>
+      <pubDate>${dateUTC}</pubDate>
+      <guid>${domain}/projects/nile-learn</guid>
+      <description>Learning platform with public course discovery, six role-based portals, RBAC, i18n/RTL, and Moodle-backed learning workflows.</description>
+    </item>
+    
+    <item>
+      <title>Faiz E Aam School Platform</title>
+      <link>${domain}/projects</link>
+      <pubDate>${dateUTC}</pubDate>
+      <guid>${domain}/projects/faiz-e-aam</guid>
+      <description>Integrated school website, admissions centre, guardian portal, and staff workspace with fees, results, timetables, and audit trails.</description>
+    </item>
+    
+    <item>
+      <title>Poshsaaz - Handmade Botanical Boutique</title>
+      <link>${domain}/projects</link>
+      <pubDate>${dateUTC}</pubDate>
+      <guid>${domain}/projects/poshsaaz</guid>
+      <description>Editorial-style storefront for a Kashmiri handcrafted floral accessories brand with scroll-driven motion and WhatsApp ordering.</description>
+    </item>
+    
+    <item>
       <title>BillExpert - Invoice &amp; Billing Management</title>
       <link>${domain}/projects</link>
       <pubDate>${dateUTC}</pubDate>

@@ -19,6 +19,76 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'fiqhai',
+    title: {
+      en: 'Fiqh.ai - Citation-Safe Scholarly Search Engine',
+      ar: 'Fiqh.ai - محرك بحث مرجعي موثّق للفقه الحنفي'
+    },
+    description: {
+      en: 'Hybrid lexical + semantic search over 115k+ passages of classical Hanafi Fiqh texts. Reciprocal Rank Fusion, exact volume/page citations, split-screen reading pane, and Arabic-aware text-to-speech.',
+      ar: 'بحث هجين (لفظي + دلالي) في أكثر من 115 ألف مقطع من كتب الفقه الحنفي الكلاسيكية. دمج الترتيب المتبادل، واستشهادات دقيقة بالجزء والصفحة، ولوحة قراءة مقسّمة، وقراءة صوتية للعربية.'
+    },
+    href: 'https://github.com/HASHIM-HAMEEM/fiqhai',
+    repoUrl: 'https://github.com/HASHIM-HAMEEM/fiqhai',
+    image: '/projects/generated/fiqhai-gpt.png',
+    tags: ['Next.js', 'React', 'FastAPI', 'SQLite', 'Sentence Transformers', 'Hugging Face'],
+    featured: true,
+    status: 'In Development'
+  },
+  {
+    id: 'nile-learn',
+    title: {
+      en: 'Nile Learn - Nile Center Learning Platform',
+      ar: 'Nile Learn - منصة تعلم مركز النيل'
+    },
+    description: {
+      en: 'Learning platform with public course discovery, six role-based portals (student, teacher, registrar, HOD, branch admin, super admin), RBAC, i18n/RTL, Supabase persistence, and Moodle-backed quizzes, attendance, and grading.',
+      ar: 'منصة تعليمية مع استكشاف عام للدورات، وست بوابات حسب الدور (طالب، معلم، مسجّل، رئيس قسم، مدير فرع، مدير عام)، وصلاحيات RBAC، ودعم i18n/RTL، وتخزين Supabase، واختبارات وحضور وتقييم عبر Moodle.'
+    },
+    href: 'https://nile-center-platform.vercel.app/',
+    link: 'https://nile-center-platform.vercel.app/',
+    repoUrl: 'https://github.com/scnz141/NilecenterPlatform',
+    image: '/projects/generated/nile-learn-gpt.png',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Supabase', 'Node.js', 'Moodle'],
+    featured: true,
+    status: 'Running'
+  },
+  {
+    id: 'faiz-e-aam',
+    title: {
+      en: 'Faiz E Aam School Platform',
+      ar: 'منصة مدرسة فيض عام'
+    },
+    description: {
+      en: 'Integrated school website, admissions centre, guardian portal, and staff workspace. Fees, receipts, results, timetables, notices, and audit trails on a Supabase/PostgreSQL modular monolith with strict role-scoped authorization.',
+      ar: 'موقع مدرسي متكامل مع مركز قبول، وبوابة أولياء الأمور، ومساحة عمل للموظفين. الرسوم والإيصالات والنتائج والجداول والإشعارات وسجلات التدقيق على بنية أحادية معيارية فوق Supabase/PostgreSQL مع صلاحيات صارمة حسب الدور.'
+    },
+    href: 'https://faizeaam.vercel.app',
+    link: 'https://faizeaam.vercel.app',
+    repoUrl: 'https://github.com/scnz313/FAIZ-A-AAM-',
+    image: '/projects/generated/faiz-e-aam-gpt.png',
+    tags: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL'],
+    featured: true,
+    status: 'In Development'
+  },
+  {
+    id: 'poshsaaz',
+    title: {
+      en: 'Poshsaaz - Handmade Botanical Boutique',
+      ar: 'Poshsaaz - متجر إكسسوارات نباتية يدوية'
+    },
+    description: {
+      en: 'Editorial-style storefront for a Kashmiri handcrafted floral accessories brand: everlasting bouquets, curtain holdbacks, charms, and keepsakes with scroll-driven motion, Cloudinary media, and WhatsApp ordering.',
+      ar: 'واجهة متجر بأسلوب تحريري لعلامة كشميرية للإكسسوارات النباتية اليدوية: باقات دائمة، وماسكات ستائر، وتعليقات، وهدايا تذكارية مع حركة مرتبطة بالتمرير، ووسائط Cloudinary، والطلب عبر واتساب.'
+    },
+    href: 'https://www.poshsaaz.live',
+    link: 'https://www.poshsaaz.live',
+    repoUrl: 'https://github.com/scnz141/poshsaaz',
+    image: '/projects/generated/poshsaaz-gpt.png',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Node.js'],
+    status: 'Running'
+  },
+  {
     id: 'billexpert',
     title: {
       en: 'BillExpert - Professional Invoice & Billing Management',
@@ -96,8 +166,7 @@ export const projects: Project[] = [
     link: 'https://pub.dev/packages/islamic_kit',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/islamic_kit',
     image: '/projects/generated/islamic-kit-gpt.png',
-    tags: ['Flutter', 'Dart', 'Islamic APIs', 'Prayer Times', 'Qibla Compass'],
-    featured: true
+    tags: ['Flutter', 'Dart', 'Islamic APIs', 'Prayer Times', 'Qibla Compass']
   },
   {
     id: 'maududi-library',
@@ -158,8 +227,7 @@ export const projects: Project[] = [
     href: 'https://play.google.com/store/apps/details?id=com.qataralnada.app&pcampaignid=web_share',
     link: 'https://play.google.com/store/apps/details?id=com.qataralnada.app&pcampaignid=web_share',
     image: '/projects/generated/qatar-al-nada-gpt.png',
-    tags: ['Flutter', 'Dart'],
-    featured: true
+    tags: ['Flutter', 'Dart']
   },
   {
     id: 'hms',
