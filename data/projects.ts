@@ -28,12 +28,13 @@ export const projects: Project[] = [
       en: 'Hybrid lexical + semantic search over 115k+ passages of classical Hanafi Fiqh texts. Reciprocal Rank Fusion, exact volume/page citations, split-screen reading pane, and Arabic-aware text-to-speech.',
       ar: 'بحث هجين (لفظي + دلالي) في أكثر من 115 ألف مقطع من كتب الفقه الحنفي الكلاسيكية. دمج الترتيب المتبادل، واستشهادات دقيقة بالجزء والصفحة، ولوحة قراءة مقسّمة، وقراءة صوتية للعربية.'
     },
-    href: 'https://github.com/HASHIM-HAMEEM/fiqhai',
+    href: 'https://fiqhai-web.vercel.app/',
+    link: 'https://fiqhai-web.vercel.app/',
     repoUrl: 'https://github.com/HASHIM-HAMEEM/fiqhai',
     image: '/projects/generated/fiqhai-gpt.png',
     tags: ['Next.js', 'React', 'FastAPI', 'SQLite', 'Sentence Transformers', 'Hugging Face'],
     featured: true,
-    status: 'In Development'
+    status: 'Running'
   },
   {
     id: 'nile-learn',
@@ -69,7 +70,7 @@ export const projects: Project[] = [
     image: '/projects/generated/faiz-e-aam-gpt.png',
     tags: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL'],
     featured: true,
-    status: 'In Development'
+    status: 'Running'
   },
   {
     id: 'poshsaaz',
