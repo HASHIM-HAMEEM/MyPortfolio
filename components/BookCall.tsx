@@ -36,11 +36,11 @@ const BookCall = () => {
           <div className="flex items-center gap-2 group-hover:gap-8 sm:group-hover:gap-12 transition-all duration-300 justify-center md:justify-start">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden flex-shrink-0">
               <Image 
-                alt="Profile" 
+                alt="Hashim Hameem calligraphy emblem" 
                 width={26} 
                 height={26} 
                 className="w-full h-full object-cover" 
-                src="/profile-hashim.png"
+                src="/profile-calligraphy.png"
               />
             </div>
             <div className="flex items-center gap-0 absolute left-[28px] sm:left-[30px] transform -translate-x-full opacity-0 group-hover:translate-x-2 group-hover:opacity-100 transition-all duration-300">

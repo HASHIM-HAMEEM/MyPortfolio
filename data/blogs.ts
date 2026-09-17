@@ -11,6 +11,152 @@ export interface BlogPost {
 
 export const blogs: BlogPost[] = [
   {
+    id: "19",
+    title: "Fiqh.ai: Hybrid Search Without Hallucinated Citations",
+    date: "September 10, 2026",
+    description: "Why I refused to let an LLM answer Fiqh questions directly, and how BM25 + Arabic sentence embeddings fused with Reciprocal Rank Fusion give scholars exact volume and page references instead.",
+    content: `# Fiqh.ai: Hybrid Search Without Hallucinated Citations
+
+A chatbot that invents a book title, a fake author, and a wrong page number is a nuisance in most domains. In Islamic jurisprudence it is unacceptable. That single constraint shaped every decision in Fiqh.ai.
+
+## Retrieval, not generation
+
+Fiqh.ai never generates a legal ruling. It retrieves the **exact text, page, volume, and section** from a curated corpus of verified classical Hanafi prints (currently seven books, 115,000+ passages). Every result is traceable to a physical print. I call this Retrieval-Augmented *Reference*: the model helps you find, it never speaks for the scholars.
+
+## Two engines, one ranking
+
+Lexical search alone misses meaning. Search for \`بئر\` (well) and a page that uses the classical \`الركيّ\` is invisible. Semantic search alone drifts and loses exact phrases, names, and Quranic quotations. So both run on every query:
+
+- **Lexical** — SQLite FTS5 with BM25 and a custom Arabic orthographic normalizer (tashkeel stripped, alef/yaa/taa-marbuta variants folded).
+- **Semantic** — \`asafaya/bert-base-arabic\` sentence embeddings (768-d) compared by cosine similarity against precomputed vectors stored as float32 blobs.
+
+The two candidate lists are merged with **Reciprocal Rank Fusion**:
+
+\`\`\`
+score(d) = Σ 1 / (k + rank_m(d))      k = 60
+\`\`\`
+
+Because RRF only looks at *ranks*, BM25 and cosine scores never need to be on the same scale. Exact matches stay at the top; conceptually relevant pages with zero keyword overlap get pulled into the top results.
+
+## The workbench
+
+The frontend (Next.js 16, React 19, vanilla CSS with Parchment / Night / Emerald themes) is built like a manuscript desk: a split-screen context pane slides in from the right, typography controls switch between Amiri, Noto Naskh, and Cairo, and a citation menu copies Chicago, Markdown, or plain-text references. A small text-to-speech layer strips diacritics and parentheticals so the browser reads classical Arabic fluently.
+
+## What I'd tell my past self
+
+Pick the hardest correctness constraint first and let it prune the design space. "No hallucinated citations" removed a whole category of clever-looking features and left a tool scholars can actually trust.
+
+`,
+    tags: ["AI", "Search", "Next.js", "FastAPI", "Arabic NLP"],
+    readTime: 6,
+    slug: "fiqhai-hybrid-search-without-hallucinated-citations",
+  },
+  {
+    id: "20",
+    title: "Six Portals, One Product: RBAC in Nile Learn",
+    date: "August 27, 2026",
+    description: "Designing role-aware portals for students, teachers, registrars, HODs, branch admins, and super admins without forking the UI, and why Moodle stays the source of truth for learning workflows.",
+    content: `# Six Portals, One Product: RBAC in Nile Learn
+
+Nile Learn is the learning platform for Nile Center. Public course discovery on the outside; six protected portals on the inside. The trap with multi-role products is to build six apps that slowly drift apart. Here is how I avoided it.
+
+## One shell, role-scoped surfaces
+
+Every portal shares the same layout, tokens, and component library (Vite + React + TypeScript, Tailwind, shadcn/ui). Roles change *which* panels appear and *what* actions are allowed, never the visual language. A registrar and a teacher should feel like they are in the same product because they are.
+
+## Authorization lives on the server
+
+Client-side role checks are hints for rendering, not security. Every protected read and write goes through Express handlers that evaluate the role, branch scope, and ownership before touching Supabase. Browser code only ever sees publishable keys; the service-role key is server-only and never prefixed with \`VITE_\`.
+
+## Let Moodle own learning state
+
+Quizzes, attempts, attendance, and grading are Moodle-owned workflows. Nile Learn integrates through normalized adapters rather than re-implementing an LMS. That decision kept the platform small and gave us an isolated sandbox for synthetic CRUD during QA.
+
+## i18n and RTL from day one
+
+Arabic support is not a post-launch translation task. The layout primitives, iconography, and tables were built with logical properties so flipping direction is a config change, not a redesign.
+
+## Lesson
+
+Role-based products succeed when roles are *permissions* on one system, not *personas* with their own codebase.
+
+`,
+    tags: ["React", "TypeScript", "Supabase", "RBAC", "Education"],
+    readTime: 5,
+    slug: "six-portals-one-product-rbac-in-nile-learn",
+  },
+  {
+    id: "21",
+    title: "Faiz E Aam: A Modular Monolith for a Real School",
+    date: "August 12, 2026",
+    description: "Admissions, fees, results, timetables, notices, and audit trails in one codebase. Why I chose a modular monolith on Supabase/PostgreSQL over microservices, and the rules that keep financial data honest.",
+    content: `# Faiz E Aam: A Modular Monolith for a Real School
+
+Schools do not need microservices. They need admissions that never lose an application, fees that reconcile to the paisa, and results that cannot be silently edited after publication. Faiz E Aam is built around those three promises.
+
+## Architecture in one sentence
+
+A modular TypeScript web application (Next.js 15, React 19) backed by one PostgreSQL database on Supabase, one private object store, and a small database-backed outbox for asynchronous work. Public website, applicant centre, guardian portal, and staff workspace live in the same repo with strict route and permission boundaries.
+
+## Rules that shaped the data model
+
+- **Money is integer paise.** No floats, ever. Timestamps are UTC and rendered in Asia/Kolkata.
+- **Append-only where it matters.** Financial entries, submitted applications, published results, and audit events are versioned or immutable. History is never overwritten.
+- **Forward-only migrations.** Live migrations are never edited; corrections ship as new numbered migrations.
+- **Server-side authorization on every protected read and write.** Guardians see only the students linked to them; staff see only their scope.
+
+## Portals, not roles-in-a-dropdown
+
+Administrators manage access and configuration and independently approve consequential work. Principals do daily operational work. Guardians activate access only through a school-initiated invitation bound to the exact guardian record; a student number or a name alone never grants access.
+
+## The design contract
+
+The UI follows a paper-and-ink editorial system: warm paper ground, ink navy type, one saffron accent, fine 1px rules, 4px radii, no drop shadows or gradients. A written anti-slop list forbids the usual generic patterns (checkmark bullets, three-card pricing rows, glassmorphism) so the product stays institutional and calm.
+
+## Takeaway
+
+Constraints written down before code are the cheapest form of quality. The blueprint, status ledger, and design contract did more for correctness than any framework choice.
+
+`,
+    tags: ["Next.js", "Supabase", "PostgreSQL", "Architecture", "Education"],
+    readTime: 6,
+    slug: "faiz-e-aam-modular-monolith-for-a-real-school",
+  },
+  {
+    id: "22",
+    title: "Poshsaaz: Motion That Respects the Craft",
+    date: "July 22, 2026",
+    description: "Building an editorial storefront for a Kashmiri handmade floral brand: scroll-triggered reveals that stay purposeful, Cloudinary-hosted product media, and WhatsApp as the checkout.",
+    content: `# Poshsaaz: Motion That Respects the Craft
+
+Poshsaaz makes handcrafted botanical accessories in Kashmir: everlasting bouquets, curtain holdbacks, phone and car charms, currency-origami wedding bouquets. The brief for the website was simple: make the product feel as considered as it is.
+
+## Editorial over grid
+
+Instead of a centered e-commerce grid, the homepage flows like a fashion editorial. A full-bleed hero with left-aligned type, alternating asymmetric sections, a staggered product grid, and hand-drawn SVG curves between sections instead of hard rules. Palette: warm cream, soft blush, sage, lavender, deep plum type, and gold accents that echo the pieces themselves.
+
+## Motion rules
+
+Every animation had to answer "what does this reveal?" Entrance reveals run 300 to 500 ms with ease-out curves, images parallax slightly slower than text for depth, and hover lifts are subtle. Nothing bounces, nothing loops for attention. Framer Motion handles the choreography; \`prefers-reduced-motion\` disables the non-essential layers.
+
+## Media pipeline
+
+Product photography is uploaded once to Cloudinary through a small Node script and referenced by stable public IDs. That keeps the repo free of binaries and lets the boutique swap photos without a deploy.
+
+## Checkout is a conversation
+
+Small artisan brands sell through conversation, not carts. Each product card deep-links to WhatsApp with a pre-filled message naming the piece, price, and category. It converts better than a form and matches how the owner already works with customers.
+
+## Stack
+
+Vite + React + TypeScript, Tailwind CSS 4, Framer Motion, a thin Express server, deployed on Vercel.
+
+`,
+    tags: ["React", "Vite", "Framer Motion", "Tailwind CSS", "E-commerce"],
+    readTime: 4,
+    slug: "poshsaaz-motion-that-respects-the-craft",
+  },
+  {
     id: "15",
     title: "Flutter: Error Messages People Actually Read",
     date: "May 1, 2026",

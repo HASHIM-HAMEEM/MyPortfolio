@@ -27,14 +27,14 @@
         min-height: 297mm;
         margin: 0 auto;
         background: #ffffff;
-        padding: 14mm 16mm 11mm;
+        padding: 11mm 15mm 9mm;
       }
 
       header {
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 18mm;
-        padding-bottom: 6mm;
+        padding-bottom: 4.5mm;
         border-bottom: 1px solid #111111;
       }
 
@@ -79,15 +79,25 @@
         display: grid;
         grid-template-columns: 47mm 1fr;
         gap: 11mm;
-        padding-top: 7mm;
+        padding-top: 5mm;
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+        }
+
+        .page {
+          min-height: 0;
+        }
       }
 
       section {
-        margin-bottom: 6mm;
+        margin-bottom: 4.5mm;
       }
 
       h2 {
-        margin: 0 0 4mm;
+        margin: 0 0 3mm;
         font-size: 8.5px;
         line-height: 1;
         letter-spacing: 0.14em;
@@ -112,9 +122,9 @@
       }
 
       p {
-        margin: 3px 0 0;
-        font-size: 9.5px;
-        line-height: 1.55;
+        margin: 2px 0 0;
+        font-size: 9.2px;
+        line-height: 1.45;
         color: #333333;
       }
 
@@ -124,9 +134,9 @@
       }
 
       li {
-        margin: 0 0 3px;
-        font-size: 9.4px;
-        line-height: 1.48;
+        margin: 0 0 2px;
+        font-size: 9.2px;
+        line-height: 1.4;
         color: #2d2d2d;
       }
 
@@ -167,8 +177,8 @@
       }
 
       .item {
-        padding-bottom: 4.1mm;
-        margin-bottom: 4.1mm;
+        padding-bottom: 2.8mm;
+        margin-bottom: 2.8mm;
         border-bottom: 1px solid #e3e3e3;
       }
 
@@ -208,12 +218,12 @@
       <header>
         <div>
           <h1>Hashim Hameem</h1>
-          <div class="role">Full-Stack Developer & Mobile App Specialist</div>
+          <div class="role">Software Developer · Web & Mobile</div>
           <p class="summary">
-            I build production mobile apps, SaaS dashboards, and developer tools with Flutter,
-            Next.js, Supabase, Firebase, Stripe, and security analysis. My recent work spans
-            property management, invoices, library access systems, Islamic learning apps,
-            open-source Flutter packages, and vulnerability research.
+            I build production web platforms, mobile apps, and developer tools with Next.js,
+            React, Supabase, PostgreSQL, Flutter, and applied AI search. Recent work: a
+            citation-safe Arabic scholarly search engine, a multi-role learning platform, a
+            school management system, an editorial storefront, and open-source Flutter packages.
           </p>
         </div>
         <div class="contact">
@@ -236,15 +246,15 @@
               </div>
               <div class="skill-group">
                 <strong>Web</strong>
-                Next.js, React, TypeScript, Tailwind CSS, Vite
+                Next.js, React, TypeScript, Tailwind CSS, Vite, Framer Motion
               </div>
               <div class="skill-group">
                 <strong>Backend</strong>
-                Supabase, Firebase, Node.js, MongoDB, SQLite, REST APIs
+                Supabase, PostgreSQL, Firebase, Node.js, Express, FastAPI, SQLite, REST APIs
               </div>
               <div class="skill-group">
-                <strong>Product</strong>
-                SaaS dashboards, PDF generation, payments, authentication, analytics
+                <strong>AI &amp; Search</strong>
+                Hybrid lexical + semantic retrieval, BM25 / FTS5, sentence embeddings, RRF
               </div>
               <div class="skill-group">
                 <strong>Security</strong>
@@ -263,6 +273,8 @@
               <span class="chip">Open source</span>
               <span class="chip">Payment flows</span>
               <span class="chip">Security analysis</span>
+              <span class="chip">RBAC &amp; multi-tenant</span>
+              <span class="chip">i18n / RTL</span>
             </div>
           </section>
 
@@ -275,11 +287,12 @@
           <section>
             <h2>Selected Links</h2>
             <div class="link-list">
+              <span>fiqhai-web.vercel.app</span>
+              <span>nile-center-platform.vercel.app</span>
+              <span>faizeaam.vercel.app</span>
+              <span>poshsaaz.live</span>
               <span>myrentalfind.com/dev</span>
               <span>pub.dev/packages/flutter_welcome_kit</span>
-              <span>pub.dev/packages/islamic_kit</span>
-              <span>alamaiqbal.vercel.app</span>
-              <span>tafaseer.web.app</span>
             </div>
           </section>
         </aside>
@@ -287,6 +300,51 @@
         <div>
           <section>
             <h2>Selected Projects</h2>
+
+            <div class="item">
+              <div class="project-top">
+                <h3>Fiqh.ai</h3>
+                <span class="tagline">Next.js · FastAPI · SQLite FTS5 · Embeddings</span>
+              </div>
+              <p>
+                Citation-safe search over 115k+ passages of classical Hanafi Fiqh texts: hybrid
+                BM25 + Arabic embedding retrieval fused with RRF, exact volume/page citations,
+                split-screen reading pane, and Arabic text-to-speech.
+              </p>
+            </div>
+
+            <div class="item">
+              <div class="project-top">
+                <h3>Nile Learn</h3>
+                <span class="tagline">React · Vite · Supabase · Moodle</span>
+              </div>
+              <p>
+                Learning platform with public course discovery, six role-based portals,
+                server-enforced RBAC, i18n/RTL, and Moodle-backed quizzes, attendance, and grading.
+              </p>
+            </div>
+
+            <div class="item">
+              <div class="project-top">
+                <h3>Faiz E Aam School Platform</h3>
+                <span class="tagline">Next.js · Supabase · PostgreSQL</span>
+              </div>
+              <p>
+                Modular-monolith school system: public site, admissions, guardian portal, and staff
+                workspace with fees, results, timetables, notices, and append-only audit trails.
+              </p>
+            </div>
+
+            <div class="item">
+              <div class="project-top">
+                <h3>Poshsaaz</h3>
+                <span class="tagline">React · Vite · Framer Motion · Cloudinary</span>
+              </div>
+              <p>
+                Editorial storefront for a Kashmiri handcrafted floral-accessories brand with
+                scroll-driven motion, a Cloudinary media pipeline, and WhatsApp ordering.
+              </p>
+            </div>
 
             <div class="item">
               <div class="project-top">
@@ -312,45 +370,24 @@
 
             <div class="item">
               <div class="project-top">
-                <h3>IQRA Library Registration App</h3>
-                <span class="tagline">Flutter · Supabase · QR</span>
+                <h3>IQRA Library App &amp; Dashboard</h3>
+                <span class="tagline">Flutter · React · Supabase · QR</span>
               </div>
               <p>
-                Mobile and dashboard system for library access, student management, QR scan
-                entry/exit, role-based operations, and real-time data sync.
+                Mobile app and admin dashboard for library access with QR entry/exit, member
+                records, role-based operations, analytics, and real-time sync.
               </p>
             </div>
 
             <div class="item">
               <div class="project-top">
-                <h3>Library Dashboard</h3>
-                <span class="tagline">React · TypeScript · Supabase</span>
+                <h3>Flutter Welcome Kit &amp; Islamic Learning Apps</h3>
+                <span class="tagline">Flutter packages · Firebase · AI APIs</span>
               </div>
               <p>
-                Admin dashboard for private library operations with analytics, authentication,
-                access controls, member records, and activity monitoring.
-              </p>
-            </div>
-
-            <div class="item">
-              <div class="project-top">
-                <h3>Flutter Welcome Kit</h3>
-                <span class="tagline">Flutter package · UI/UX</span>
-              </div>
-              <p>
-                Published onboarding and guided-tour package with spotlight overlays, tooltips,
-                customization options, accessibility focus, and reusable Flutter APIs.
-              </p>
-            </div>
-
-            <div class="item">
-              <div class="project-top">
-                <h3>Islamic Kit, Tafaseer, Iqbal Apps</h3>
-                <span class="tagline">Flutter · Firebase · AI APIs</span>
-              </div>
-              <p>
-                Suite of mobile learning apps covering prayer times, Qibla, Hijri calendar,
-                tafseer sources, offline reading, poetry analysis, and bilingual AI insights.
+                Published onboarding/guided-tour package and a suite of mobile learning apps
+                covering prayer times, Qibla, tafseer sources, offline reading, and bilingual
+                AI poetry insights.
               </p>
             </div>
           </section>
@@ -361,10 +398,10 @@
               <h3>Independent Full-Stack & Mobile Developer</h3>
               <div class="meta">Product design, implementation, launch, and maintenance</div>
               <ul>
-                <li>Built cross-platform Flutter apps and modern web dashboards from product requirements to usable releases.</li>
-                <li>Integrated authentication, database workflows, local storage, PDF generation, payment flows, and admin tooling.</li>
+                <li>Built multi-role web platforms (learning, school management) with server-enforced RBAC, Supabase/PostgreSQL data models, and audit trails.</li>
+                <li>Designed a hybrid lexical + semantic retrieval pipeline for classical Arabic texts with exact, verifiable citations.</li>
+                <li>Shipped cross-platform Flutter apps and web dashboards from requirements to release, including auth, payments, PDF generation, and admin tooling.</li>
                 <li>Created reusable package APIs and open-source projects for Flutter developers.</li>
-                <li>Improved portfolio presentation with a black/white theme, refreshed project visuals, and updated project positioning.</li>
               </ul>
             </div>
 

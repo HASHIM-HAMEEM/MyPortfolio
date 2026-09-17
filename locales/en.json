@@ -5,11 +5,11 @@
   
   "intro.name": "Hashim Hameem",
   "intro.available": "Available",
-  "intro.headline": "Full-Stack Developer, Mobile App Specialist & Cybersecurity Analyst",
-  "intro.subline": "Flutter · Next.js · Supabase · Firebase · Stripe · Security Analysis",
+  "intro.headline": "Software Developer",
+  "intro.subline": "I build web and mobile apps.",
   "intro.email": "hashimdar141@yahoo.com",
   "intro.location": "Kashmir",
-  "intro.description": "Most of my work is shipping mobile and web products.\nI also review web apps for security issues, weak access control, and real-world risk.",
+  "intro.description": "Mostly Next.js, React, Flutter, and Supabase.\nI also look at web apps for security issues.",
   
   "about.title": "About",
   "about.experience": "Experience",
