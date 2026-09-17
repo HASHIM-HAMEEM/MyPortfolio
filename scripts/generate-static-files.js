@@ -47,32 +47,32 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
     <item>
       <title>Fiqh.ai - Citation-Safe Scholarly Search Engine</title>
       <link>${domain}/projects</link>
-      <pubDate>${dateUTC}</pubDate>
-      <guid>${domain}/projects/fiqhai</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">${domain}/projects/fiqhai</guid>
       <description>Hybrid lexical and semantic search over classical Hanafi Fiqh texts with exact volume/page citations and Reciprocal Rank Fusion.</description>
     </item>
     
     <item>
       <title>Nile Learn - Nile Center Learning Platform</title>
       <link>${domain}/projects</link>
-      <pubDate>${dateUTC}</pubDate>
-      <guid>${domain}/projects/nile-learn</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">${domain}/projects/nile-learn</guid>
       <description>Learning platform with public course discovery, six role-based portals, RBAC, i18n/RTL, and Moodle-backed learning workflows.</description>
     </item>
     
     <item>
       <title>Faiz E Aam School Platform</title>
       <link>${domain}/projects</link>
-      <pubDate>${dateUTC}</pubDate>
-      <guid>${domain}/projects/faiz-e-aam</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">${domain}/projects/faiz-e-aam</guid>
       <description>Integrated school website, admissions centre, guardian portal, and staff workspace with fees, results, timetables, and audit trails.</description>
     </item>
     
     <item>
       <title>Poshsaaz - Handmade Botanical Boutique</title>
       <link>${domain}/projects</link>
-      <pubDate>${dateUTC}</pubDate>
-      <guid>${domain}/projects/poshsaaz</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">${domain}/projects/poshsaaz</guid>
       <description>Editorial-style storefront for a Kashmiri handcrafted floral accessories brand with scroll-driven motion and WhatsApp ordering.</description>
     </item>
     
@@ -80,7 +80,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
       <title>BillExpert - Invoice &amp; Billing Management</title>
       <link>${domain}/projects</link>
       <pubDate>${dateUTC}</pubDate>
-      <guid>${domain}/projects/billexpert</guid>
+      <guid isPermaLink="false">${domain}/projects/billexpert</guid>
       <description>Professional invoice and billing management mobile app with multi-currency support, PDF generation, and offline-first architecture.</description>
     </item>
     
@@ -88,7 +88,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
       <title>IQRA Library Management System</title>
       <link>${domain}/projects</link>
       <pubDate>${dateUTC}</pubDate>
-      <guid>${domain}/projects/iqra-library</guid>
+      <guid isPermaLink="false">${domain}/projects/iqra-library</guid>
       <description>Complete library management solution with mobile app and web dashboard featuring real-time sync and QR code scanning.</description>
     </item>
     
@@ -96,7 +96,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
       <title>Iqbal Literature - Poetry Analysis App</title>
       <link>${domain}/projects</link>
       <pubDate>${dateUTC}</pubDate>
-      <guid>${domain}/projects/iqbal-literature</guid>
+      <guid isPermaLink="false">${domain}/projects/iqbal-literature</guid>
       <description>Interactive poem analysis app with AI-powered insights and bilingual support for Allama Iqbal's poetry.</description>
     </item>
   </channel>
