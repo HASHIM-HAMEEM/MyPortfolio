@@ -5,11 +5,11 @@
   
   "intro.name": "هاشم حميم",
   "intro.available": "متاح",
-  "intro.headline": "مطور Full-Stack ومتخصص تطبيقات جوال ومحلل أمن سيبراني",
-  "intro.subline": "Flutter · Next.js · Supabase · Firebase · Stripe · تحليل أمني",
+  "intro.headline": "مطوّر برمجيات",
+  "intro.subline": "أبني تطبيقات ويب وجوال.",
   "intro.email": "hashimdar141@yahoo.com",
   "intro.location": "كشمير",
-  "intro.description": "أغلب عملي إطلاق منتجات للجوال والويب.\nأراجع أيضاً تطبيقات الويب من ناحية الأمان، ضبط الصلاحيات، والمخاطر العملية.",
+  "intro.description": "غالباً بـ Next.js وReact وFlutter وSupabase.\nوأراجع أيضاً تطبيقات الويب بحثاً عن مشاكل أمنية.",
   
   "about.title": "نبذة",
   "about.experience": "الخبرة",
